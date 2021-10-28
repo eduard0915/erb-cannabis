@@ -7,7 +7,8 @@
         Tip 2: you can also add an image using data-image tag
         Tip 3: you can change the color of the sidebar with data-background-color="white | black" -->
     <div class="logo">
-        <img src="{% static 'lib/materialkitpro/img/logo_bmpro_cannabis.svg' %}" style="max-width: 90%;max-height: 90%;width:auto;height:auto" alt="bpm_pro_cannabis"/>
+        <img src="{% static 'lib/materialkitpro/img/logo_bmpro_cannabis.svg' %}"
+             style="max-width: 100%;width:auto;height:auto" alt="bpm_pro_cannabis"/>
     </div>
     <div class="logo logo-mini">
         <a href="http://www.bpmpro.co">
@@ -59,7 +60,7 @@
             <li class="{% if material_create in request.path or material_list in request.path %} active {% endif %}">
                 <a data-toggle="collapse" href="#materials" aria-expanded="true">
                     <i class="material-icons">list_alt</i>
-                    <p>Traabilidad Lotes
+                    <p>Trazabilidad Lotes
                         <b class="caret"></b>
                     </p>
                 </a>
