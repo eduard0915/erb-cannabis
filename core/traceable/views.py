@@ -14,23 +14,23 @@ class VegetalMaterialCreate(CreateView):
     model = Traceability
     form_class = VegetalMaterialForms
     template_name = 'create_material.html'
-    # success_url =
-    # url_redirect = success_url
+    success_url =  reverse_lazy('traceable:material_list')
+    url_redirect = success_url
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        global form
         data = {}
         try:
             action = request.POST['action']
             if action == 'add':
                 form = self.get_form()
                 if form.is_valid():
-                    form.save()
+                    data = form.save()
                     messages.success(request, f'Registro de material vegetal realizado satisfactoriamente!')
+                    print(data)
                 else:
                     messages.error(request, form.errors)
             else:
@@ -74,7 +74,9 @@ class VegetalMaterialListView(LoginRequiredMixin, ListView):
                     'taxonomic',
                     'weight_collection',
                     'date_collection',
-                    'reception_date'
+                    'reception_date',
+                    'control_number',
+                    'received_amount'
                 ).order_by('-id'))
                 return JsonResponse(material, safe=False)
             else:
@@ -85,7 +87,7 @@ class VegetalMaterialListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Lotes Cannabis'
+        context['title'] = 'Material Vegetal'
         context['create_url'] = reverse_lazy('traceable:material_create')
-        context['entity'] = 'Lotes Cannabis'
+        context['entity'] = 'Material Vegetal'
         return context

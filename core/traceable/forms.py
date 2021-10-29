@@ -11,29 +11,46 @@ class VegetalMaterialForms(ModelForm):
 
     class Meta:
         model = Traceability
-        fields = ('seed_type',
-                  'crop_type',
-                  'geo_zone',
-                  'plant_size',
-                  'leaves_size',
-                  'flowers_size',
-                  'taxonomic',
-                  'weight_collection',
-                  'date_collection',
-                  'reception_date'
-                  )
+        fields = 'seed_type', 'crop_type', 'geo_zone', 'plant_size', 'leaves_size', 'flowers_size', 'taxonomic', 'weight_collection', 'date_collection', 'reception_date'
+
         widgets = {
             'crop_type': Select(attrs={'class': 'form-control', 'required': True}),
             'seed_type': Select(attrs={'class': 'form-control', 'required': True}),
             'geo_zone': TextInput(attrs={'class': 'form-control', 'required': True}),
+            'taxonomic': TextInput(attrs={'class': 'form-control', 'required': True}),
+            'plant_size': NumberInput(attrs={'class': 'form-control', 'required': True}),
+            'leaves_size': NumberInput(attrs={'class': 'form-control', 'required': True}),
+            'flowers_size': NumberInput(attrs={'class': 'form-control', 'required': True}),
+            'weight_collection': NumberInput(attrs={'class': 'form-control', 'required': True}),
+            'reception_date': DateInput(format='%Y-%m-%d', attrs= {
+                'id': 'reception_date',
+                'class': 'form-control datepicker'
+            }),
+            'date_collection': DateInput(format='%Y-%m-%d', attrs= {
+                'id': 'date_collection',
+                'class': 'form-control datepicker'
+            })
         }
+
+        exclude = [
+            'accepted_material',
+            'classification_date',
+            'control_number',
+            'batch_number',
+            'extract_batch_number',
+            'extraction_date',
+            'conc_batch_number',
+            'conc_date',
+            'isolate_batch_number',
+            'isolate_date'
+        ]
 
     def save(self, commit=True):
         data = {}
         form = super()
         try:
             if form.is_valid():
-                data = form.save()
+                form.save()
             else:
                 data['error'] = form.errors
         except Exception as e:

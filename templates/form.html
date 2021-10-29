@@ -28,13 +28,6 @@
                             <div class="row">
                         {% endif %}
                     <div class="col-md-4">
-                        {% if field.name == '' %}
-                            <label for=""></label>
-                            <select class="selectpicker" data-style="btn btn-success btn-round" multiple title="Seleccionar" id="{{ field }}">
-
-                            </select>
-                            <span class="help-block">{{ field.help_text }}</span>
-                        {% else %}
                         <div {% if field.name == 'is_active' %} class="checkbox"
                             {% elif field.name == 'photo' or field.name == 'companyLogo' %} class="fileinput fileinput-new text-center" data-provides='fileinput'
                             {% else %} class="form-group label-floating" {% endif %}>
@@ -63,7 +56,6 @@
                                 <span class="help-block">{{ field.help_text }}</span>
                             {% endif %}
                         </div>
-                        {% endif %}
                     </div>
                     {% if forloop.last %}
                         </div>
@@ -114,6 +106,38 @@
             format: 'YYYY-MM-DD',
             locale: 'es',
             defaultDate: $('.date_birth'),
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove',
+            },
+        });
+        $('#reception_date').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: 'es',
+            defaultDate: $('.reception_date'),
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove',
+            },
+        });
+        $('#date_collection').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: 'es',
+            defaultDate: $('.date_collection'),
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",

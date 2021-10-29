@@ -33,16 +33,17 @@ class Traceability(BaseModel):
     date_collection = models.DateField(verbose_name='Fecha de Recolección')
     reception_date = models.DateField(verbose_name='Fecha de Ingreso')
     weight_collection = models.SmallIntegerField(verbose_name='Peso de Material Recolectado (Kg)')
-    accepted_material = models.SmallIntegerField(verbose_name='Peso de Material Aceptado (Kg)')
-    classification_date = models.DateField(verbose_name='Fecha de Clasificación')
-    control_number = models.CharField(max_length=15, verbose_name='N° de Control')
-    batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Material Vegetal')
-    extract_batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Extracto')
-    extraction_date = models.DateField (verbose_name='Fecha de Extracción')
-    conc_batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Concentrado')
-    conc_date = models.DateField (verbose_name='Fecha de Concentración')
-    isolate_batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Aislado')
-    isolate_date = models.DateField (verbose_name='Fecha de Aislamiento')
+    received_amount = models.SmallIntegerField(verbose_name='Peso de Material Recibido (Kg)', blank=True, null=True)
+    accepted_material = models.SmallIntegerField(verbose_name='Peso de Material Aceptado (Kg)', blank=True, null=True)
+    classification_date = models.DateField(verbose_name='Fecha de Clasificación', blank=True, null=True)
+    control_number = models.CharField(max_length=15, verbose_name='N° de Control', blank=True, null=True)
+    batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Material Vegetal', blank=True, null=True)
+    extract_batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Extracto', blank=True, null=True)
+    extraction_date = models.DateField (verbose_name='Fecha de Extracción', blank=True, null=True)
+    conc_batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Concentrado', blank=True, null=True)
+    conc_date = models.DateField (verbose_name='Fecha de Concentración', blank=True, null=True)
+    isolate_batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Aislado', blank=True, null=True)
+    isolate_date = models.DateField (verbose_name='Fecha de Aislamiento', blank=True, null=True)
 
     def __str__(self):
         return self.control_number
@@ -67,6 +68,6 @@ class Traceability(BaseModel):
                 self.user_creation = user
             else:
                 self.user_updated = user
-        # self.description_ext = self.description_ext.capitalize()
+        self.taxonomic = self.taxonomic.capitalize()
         return super(Traceability, self).save(*args, **kwargs)
 

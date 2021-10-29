@@ -67,7 +67,7 @@
                 <div class="{% if material_create in request.path or material_list in request.path %} collapse in {% else %} collapse {% endif %}" id="materials">
                     <ul class="nav">
                         <li class="{% if material_list in request.path %} active {% endif %}">
-                            <a href="{% url 'traceable:material_list' %}">Lotes de Aislados</a>
+                            <a href="{% url 'traceable:material_list' %}">Material Vegetal</a>
                         </li>
                         <li class="{% if material_create in request.path %} active {% endif %}">
                             <a href="{% url 'traceable:material_create' %}">Registrar Material</a>

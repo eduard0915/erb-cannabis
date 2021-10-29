@@ -25,7 +25,6 @@ class UserCreateView(LoginRequiredMixin, CreateView):
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        global form
         data = {}
         try:
             action = request.POST['action']
