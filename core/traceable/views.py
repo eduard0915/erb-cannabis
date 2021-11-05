@@ -41,10 +41,10 @@ class VegetalMaterialCreate(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Registro de Material Vegetal'
+        context['title'] = 'Registro de Material Vegetal - Cosecha'
         context['list_url'] = reverse_lazy('traceable:material_list')
         context['action'] = 'add'
-        context['entity'] = 'Registro de Material Vegetal'
+        context['entity'] = 'Registro de Material Vegetal- Cosecha'
         return context
 
 # Listado de usuarios

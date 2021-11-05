@@ -10,18 +10,18 @@
 
 {% block content %}
 
-    <div class="col-md-9">
+    <div class="col-md-12">
         <div class="card">
-
-            <div class="card-header">
+            <div class="card-header card-header-icon" data-background-color="green">
+                <i class="material-icons">details</i>
+            </div>
+            <div class="card-content">
                 <h4 class="card-title"><b>{{ entity }}</b>
 {#                    <small>- Horizontal Tabs</small>#}
                 </h4>
-            </div>
-            <div class="card-content">
                 <ul class="nav nav-pills nav-pills-success">
                     <li class="active">
-                        <a href="#pill1" data-toggle="tab">Cultivo</a>
+                        <a href="#pill1" data-toggle="tab">Cosecha</a>
                     </li>
                     <li>
                         <a href="#pill2" data-toggle="tab">Extracción y Concentración</a>
@@ -36,53 +36,52 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="pill1">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <p class="card-text"><strong>Fecha de Recepción:</strong></p>
                                 {{ object.reception_date | date:'Y-m-d' }}
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <p class="card-text"><strong>Genero y Especie:</strong></p>
                                 {{ object.taxonomic }}
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <p class="card-text"><strong>Fecha de Recolección:</strong></p>
                                 {{ object.date_collection | date:'Y-m-d' }}
                             </div>
+                            <div class="col-md-3">
+                                <p class="card-text"><strong>Peso Recolectado:</strong></p>
+                                    {{ object.weight_collection }} Kg
+                            </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-4">
-                                <p class="card-text"><strong>Peso Recolectado (Kg):</strong></p>
-                                    {{ object.weight_collection }}
+                            <div class="col-md-3">
+                                <p class="card-text"><strong>Peso de Material Empacado:</strong></p>{{ object.accepted_material }} Kg
                             </div>
-                            <div class="col-md-4">
-                                <p class="card-text"><strong>Peso de Material Recibido (Kg):</strong></p>
-                                    {{ object.received_amount }}
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <p class="card-text"><strong>Zona de Cultivo:</strong></p>
                                     {{ object.geo_zone }}
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <p class="card-text"><strong>Tipo de Cultivo:</strong></p>{{ object.crop_type}}
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <p class="card-text"><strong>Tipo de Semilla:</strong></p>{{ object.seed_type }}
-                            </div>
-                            <div class="col-md-4">
-                                 <p class="card-text"><strong>Tamaño de Planta:</strong></p>{{ object.plant_size }}
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-4">
-                                <p class="card-text"><strong>Tamaño de las Hojas (cm):</strong></p>{{ object.leaves_size}}
+                            <div class="col-md-3">
+                                 <p class="card-text"><strong>Tamaño de Planta:</strong></p>{{ object.plant_size }} cm
                             </div>
-                            <div class="col-md-4">
-                                <p class="card-text"><strong>Tamaño de las Flores (cm):</strong></p>{{ object.flowers_size }}
+                            <div class="col-md-3">
+                                <p class="card-text"><strong>Tamaño de las Hojas:</strong></p>{{ object.leaves_size}} cm
+                            </div>
+                            <div class="col-md-3">
+                                <p class="card-text"><strong>Tamaño de las Flores:</strong></p>{{ object.flowers_size }} cm
+                            </div>
+                            <div class="col-md-3">
+                                <p class="card-text"><strong>Peso de Material Recibido:</strong></p>{{ object.received_amount }} Kg
                             </div>
                         </div>
                     </div>
@@ -107,6 +106,12 @@
                         service.
                     </div>
                 </div>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{{ list_url }}" class="btn btn-danger btn-fill">
+                    <i class="material-icons">arrow_back</i>
+                    Atrás
+                </a>
             </div>
         </div>
     </div>

@@ -34,7 +34,7 @@ class Traceability(BaseModel):
     reception_date = models.DateField(verbose_name='Fecha de Ingreso')
     weight_collection = models.SmallIntegerField(verbose_name='Peso de Material Recolectado (Kg)')
     received_amount = models.SmallIntegerField(verbose_name='Peso de Material Recibido (Kg)', blank=True, null=True)
-    accepted_material = models.SmallIntegerField(verbose_name='Peso de Material Aceptado (Kg)', blank=True, null=True)
+    accepted_material = models.SmallIntegerField(verbose_name='Peso de Material Empacado (Kg)', blank=True, null=True)
     classification_date = models.DateField(verbose_name='Fecha de Clasificación', blank=True, null=True)
     control_number = models.CharField(max_length=15, verbose_name='N° de Control', blank=True, null=True)
     batch_number = models.CharField(max_length=15, verbose_name='N° de Lote de Material Vegetal', blank=True, null=True)

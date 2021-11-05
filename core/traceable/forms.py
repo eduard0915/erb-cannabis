@@ -11,13 +11,15 @@ class VegetalMaterialForms(ModelForm):
 
     class Meta:
         model = Traceability
-        fields = 'seed_type', 'crop_type', 'geo_zone', 'plant_size', 'leaves_size', 'flowers_size', 'taxonomic', 'weight_collection', 'date_collection', 'reception_date'
+        fields = 'seed_type', 'crop_type', 'geo_zone', 'plant_size', 'leaves_size', 'flowers_size', 'taxonomic', 'weight_collection', 'date_collection', 'reception_date', 'accepted_material', 'received_amount'
 
         widgets = {
             'crop_type': Select(attrs={'class': 'form-control', 'required': True}),
             'seed_type': Select(attrs={'class': 'form-control', 'required': True}),
             'geo_zone': TextInput(attrs={'class': 'form-control', 'required': True}),
             'taxonomic': TextInput(attrs={'class': 'form-control', 'required': True}),
+            'accepted_material': NumberInput(attrs={'class': 'form-control', 'required': True}),
+            'received_amount ': NumberInput(attrs={'class': 'form-control', 'required': True}),
             'plant_size': NumberInput(attrs={'class': 'form-control', 'required': True}),
             'leaves_size': NumberInput(attrs={'class': 'form-control', 'required': True}),
             'flowers_size': NumberInput(attrs={'class': 'form-control', 'required': True}),
@@ -33,7 +35,6 @@ class VegetalMaterialForms(ModelForm):
         }
 
         exclude = [
-            'accepted_material',
             'classification_date',
             'control_number',
             'batch_number',

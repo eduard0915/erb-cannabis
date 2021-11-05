@@ -31,7 +31,7 @@ $(function ()  {
                 orderable: false,
                 render: function (data, type, row) {
                     let edition
-                    edition = '<a href="/traceability/add/'+row.id+'/" type="button" rel="tooltip" class="btn btn-info btn-xs btn-just-icon btn-simple"><i class="material-icons">loupe</i</a>';
+                    edition = '<a href="/traceability/detail/'+row.id+'/" type="button" rel="tooltip" class="btn btn-info btn-xs btn-just-icon btn-simple"><i class="material-icons">loupe</i</a>';
                     return edition;
                 }
             },
