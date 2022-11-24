@@ -4,27 +4,41 @@ from crum import get_current_user
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from djchoices import ChoiceItem, DjangoChoices
+# from djchoices import ChoiceItem, DjangoChoices
 
 from core.models import BaseModel
 
+#
+# class CropType(DjangoChoices):
+#     greenhouse = ChoiceItem('Invernadero', 'Invernadero'),
+#     free_environment = ChoiceItem('Ambiente Libre', 'Ambiente Libre'),
+#     organic = ChoiceItem('Organico', 'Organico')
+#
 
-class CropType(DjangoChoices):
-    greenhouse = ChoiceItem('Invernadero', 'Invernadero')
-    free_environment = ChoiceItem('Ambiente Libre', 'Ambiente Libre')
-    organic = ChoiceItem('Organico', 'Organico')
+CROP = [
+    ('Invernadero', 'Invernadero'),
+    ('Ambiente Libre', 'Ambiente Libre'),
+    ('Organico', 'Organico')
+]
+#
+#
+# class SeedType(DjangoChoices):
+#     creole = ChoiceItem('Criolla', 'Criolla')
+#     improved = ChoiceItem('Mejorada', 'Mejorada')
+#     baby = ChoiceItem('Baby', 'Baby')
+#     hybrid = ChoiceItem('Hibrida', 'Hibrida')
 
 
-class SeedType(DjangoChoices):
-    creole = ChoiceItem('Criolla', 'Criolla')
-    improved = ChoiceItem('Mejorada', 'Mejorada')
-    baby = ChoiceItem('Baby', 'Baby')
-    hybrid = ChoiceItem('Hibrida', 'Hibrida')
+SEED = [
+    ('Criolla', 'Criolla'),
+    ('Mejorada', 'Mejorada'),
+    ('Hibrida', 'Hibrida')
+]
 
 
 class Traceability(BaseModel):
-    seed_type = models.CharField(max_length=30, verbose_name='Tipo de Semilla', choices=SeedType.choices)
-    crop_type = models.CharField(max_length=30, verbose_name='Tipo de Cultivo', choices=CropType.choices)
+    seed_type = models.CharField(max_length=30, verbose_name='Tipo de Semilla', choices=SEED)
+    crop_type = models.CharField(max_length=30, verbose_name='Tipo de Cultivo', choices=CROP)
     geo_zone = models.CharField(max_length=50, verbose_name='Zona Geografica')
     plant_size = models.SmallIntegerField(verbose_name='Tamaño de la planta (cm)')
     leaves_size = models.SmallIntegerField(verbose_name='Tamaño de las hojas (cm)')

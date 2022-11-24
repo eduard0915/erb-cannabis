@@ -9,6 +9,7 @@ class HomeView(TemplateView):
         context['title'] = 'BPMPro Cannabis'
         return context
 
+
 class SinpermisosView(TemplateView):
     # template_name = 'sinpermisos.html'
 
